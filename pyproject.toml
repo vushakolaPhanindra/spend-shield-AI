@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spendshield-ai"
+version = "1.0.0"
+description = "Autonomous fraud detection system for public expenditure"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.109.0",
+    "uvicorn[standard]==0.27.0",
+    "python-multipart==0.0.6",
+    "pydantic==2.5.3",
+    "pydantic-settings==2.1.0",
+    "google-generativeai==0.3.2",
+    "langgraph==0.0.20",
+    "langgraph-checkpoint-postgres==0.0.6",
+    "langchain-core==0.1.10",
+    "langchain-google-genai==0.0.6",
+    "psycopg[binary]==3.1.16",
+    "psycopg-pool==3.2.0",
+    "python-dotenv==1.0.0",
+    "pillow==10.2.0",
+    "pypdf==3.17.4",
+    "aiofiles==23.2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==7.4.4",
+    "pytest-asyncio==0.23.3",
+    "httpx==0.26.0",
+]

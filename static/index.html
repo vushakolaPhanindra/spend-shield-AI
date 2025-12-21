@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendShield AI - Fraud Detection Dashboard</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i>
+            <h2>SpendShield AI</h2>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Upload Document</span>
+            </a>
+            <a href="#" class="nav-item" data-page="analysis">
+                <i class="fas fa-project-diagram"></i>
+                <span>Agent Workflow</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reports">
+                <i class="fas fa-file-alt"></i>
+                <span>Reports</span>
+            </a>
+            <a href="#" class="nav-item" data-page="history">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <p class="user-name">Admin User</p>
+                    <p class="user-role">Fraud Analyst</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 id="page-title">Dashboard</h1>
+                <p id="page-subtitle">Real-time fraud detection analytics</p>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-analyzed">0</h3>
+                        <p>Documents Analyzed</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-anomalies">0</h3>
+                        <p>Anomalies Detected</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="avg-risk-score">0</h3>
+                        <p>Avg Risk Score</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="success-rate">100%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Analyses</h3>
+                        <button class="btn-secondary">View All</button>
+                    </div>
+                    <div class="card-body">
+                        <div id="recent-analyses" class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background: #667eea;">
+                                    <i class="fas fa-file-invoice"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Demo Analysis</h4>
+                                    <p>QuickFix Solutions Ltd - $50,000</p>
+                                    <span class="timestamp">Just now</span>
+                                </div>
+                                <div class="activity-status">
+                                    <span class="badge badge-danger">High Risk</span>
+                                    <span class="risk-score">65/100</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Fraud Patterns</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="pattern-list">
+                            <div class="pattern-item">
+                                <div class="pattern-info">
+                                    <i class="fas fa-user-secret"></i>
+                                    <span>Ghost Vendors</span>
+                                </div>
+                                <div class="pattern-count">
+                                    <span class="count">1</span>
+                                    <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="pattern-item">
+                                <div class="pattern-info">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Price Inflation</span>
+                                </div>
+                                <div class="pattern-count">
+                                    <span class="count">1</span>
+                                    <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="pattern-item">
+                                <div class="pattern-info">
+                                    <i class="fas fa-copy"></i>
+                                    <span>Duplicate Invoices</span>
+                                </div>
+                                <div class="pattern-count">
+                                    <span class="count">0</span>
+                                    <span class="trend stable"><i class="fas fa-minus"></i></span>
+                                </div>
+                            </div>
+                            <div class="pattern-item">
+                                <div class="pattern-info">
+                                    <i class="fas fa-cut"></i>
+                                    <span>Split Bidding</span>
+                                </div>
+                                <div class="pattern-count">
+                                    <span class="count">0</span>
+                                    <span class="trend stable"><i class="fas fa-minus"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Page -->
+        <div id="upload-page" class="page">
+            <div class="upload-container">
+                <div class="upload-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h2>Upload Document for Analysis</h2>
+                    <p>Drag and drop your invoice, tender, or approval document here</p>
+
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg" hidden>
+                        <i class="fas fa-file-upload"></i>
+                        <p>Click to browse or drag files here</p>
+                        <span class="file-types">Supported: PDF, PNG, JPG, JPEG (Max 10MB)</span>
+                    </div>
+
+                    <div id="file-preview" class="file-preview" style="display: none;">
+                        <div class="file-info">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <p id="file-name"></p>
+                                <span id="file-size"></span>
+                            </div>
+                            <button id="remove-file" class="btn-icon">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="upload-options">
+                        <div class="form-group">
+                            <label>Department</label>
+                            <input type="text" id="department" placeholder="e.g., Finance, Procurement">
+                        </div>
+                        <div class="form-group">
+                            <label>Fiscal Year</label>
+                            <input type="number" id="fiscal-year" placeholder="2024" value="2024">
+                        </div>
+                    </div>
+
+                    <button id="analyze-btn" class="btn-primary" disabled>
+                        <i class="fas fa-search"></i>
+                        Start Analysis
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Workflow Page -->
+        <div id="analysis-page" class="page">
+            <div class="workflow-container">
+                <h2>Multi-Agent Analysis Workflow</h2>
+                <p class="workflow-subtitle">Watch as our AI agents process your document through 4 specialized stages
+                </p>
+
+                <div class="workflow-stages">
+                    <!-- Stage 1: Extractor -->
+                    <div class="stage" id="stage-extractor">
+                        <div class="stage-number">1</div>
+                        <div class="stage-content">
+                            <div class="stage-icon">
+                                <i class="fas fa-file-import"></i>
+                            </div>
+                            <h3>Extractor Agent</h3>
+                            <p>Analyzing document and extracting structured data...</p>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="stage-details" style="display: none;">
+                                <div class="detail-item">
+                                    <span class="label">Vendor:</span>
+                                    <span class="value" id="extracted-vendor">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Amount:</span>
+                                    <span class="value" id="extracted-amount">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Items:</span>
+                                    <span class="value" id="extracted-items">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stage-status pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="workflow-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Stage 2: Verifier -->
+                    <div class="stage" id="stage-verifier">
+                        <div class="stage-number">2</div>
+                        <div class="stage-content">
+                            <div class="stage-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>Verifier Agent</h3>
+                            <p>Cross-checking against database and historical records...</p>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="stage-details" style="display: none;">
+                                <div class="detail-item">
+                                    <span class="label">Vendor Exists:</span>
+                                    <span class="value" id="vendor-exists">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Risk Score:</span>
+                                    <span class="value" id="vendor-risk">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Historical Price:</span>
+                                    <span class="value" id="historical-price">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stage-status pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="workflow-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Stage 3: Anomaly Detector -->
+                    <div class="stage" id="stage-anomaly">
+                        <div class="stage-number">3</div>
+                        <div class="stage-content">
+                            <div class="stage-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Anomaly Detector</h3>
+                            <p>Identifying fraud patterns and suspicious activities...</p>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="stage-details" style="display: none;">
+                                <div id="anomalies-list"></div>
+                            </div>
+                        </div>
+                        <div class="stage-status pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="workflow-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Stage 4: Reporter -->
+                    <div class="stage" id="stage-reporter">
+                        <div class="stage-number">4</div>
+                        <div class="stage-content">
+                            <div class="stage-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Reporter Agent</h3>
+                            <p>Generating comprehensive fraud risk report...</p>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="stage-details" style="display: none;">
+                                <div class="risk-score-display">
+                                    <div class="score-circle">
+                                        <span id="final-risk-score">0</span>
+                                        <small>/100</small>
+                                    </div>
+                                    <p id="risk-level">-</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stage-status pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-actions">
+                    <button id="start-demo-analysis" class="btn-primary">
+                        <i class="fas fa-play"></i>
+                        Run Demo Analysis
+                    </button>
+                    <button id="reset-workflow" class="btn-secondary" style="display: none;">
+                        <i class="fas fa-redo"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="reports-page" class="page">
+            <div class="reports-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Latest Fraud Risk Report</h3>
+                        <button class="btn-primary" id="export-report">
+                            <i class="fas fa-download"></i>
+                            Export PDF
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="report-content" class="report-content">
+                            <div class="report-header">
+                                <h2>Fraud Risk Assessment Report</h2>
+                                <p class="report-date">Generated: <span id="report-date">-</span></p>
+                            </div>
+
+                            <div class="report-summary">
+                                <div class="summary-item">
+                                    <label>Risk Level:</label>
+                                    <span id="report-risk-level" class="badge badge-danger">HIGH</span>
+                                </div>
+                                <div class="summary-item">
+                                    <label>Fraud Risk Score:</label>
+                                    <span id="report-risk-score">65/100</span>
+                                </div>
+                                <div class="summary-item">
+                                    <label>Document Reference:</label>
+                                    <span id="report-reference">INV-2024-500</span>
+                                </div>
+                            </div>
+
+                            <div class="report-section">
+                                <h3>Document Details</h3>
+                                <table class="report-table">
+                                    <tr>
+                                        <td><strong>Vendor Name:</strong></td>
+                                        <td id="report-vendor">QuickFix Solutions Ltd</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Amount:</strong></td>
+                                        <td id="report-amount">$50,000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Transaction Date:</strong></td>
+                                        <td id="report-date-value">December 20, 2024</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="report-section">
+                                <h3>Anomalies Detected</h3>
+                                <div id="report-anomalies">
+                                    <div class="anomaly-card critical">
+                                        <div class="anomaly-header">
+                                            <i class="fas fa-user-secret"></i>
+                                            <h4>Ghost Vendor</h4>
+                                            <span class="severity">CRITICAL</span>
+                                        </div>
+                                        <p>Vendor 'QuickFix Solutions Ltd' not found in database</p>
+                                    </div>
+                                    <div class="anomaly-card high">
+                                        <div class="anomaly-header">
+                                            <i class="fas fa-chart-line"></i>
+                                            <h4>Price Inflation</h4>
+                                            <span class="severity">HIGH</span>
+                                        </div>
+                                        <p>25% price inflation detected ($50.00 vs $40.00 historical average)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-section">
+                                <h3>Recommendations</h3>
+                                <ol id="report-recommendations">
+                                    <li>Immediately verify the legitimacy of QuickFix Solutions Ltd</li>
+                                    <li>Investigate the 25% price inflation</li>
+                                    <li>Suspend payment pending investigation</li>
+                                    <li>Strengthen procurement controls</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Page -->
+        <div id="history-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Analysis History</h3>
+                    <div class="filters">
+                        <select id="filter-risk">
+                            <option value="all">All Risk Levels</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Document</th>
+                                <th>Vendor</th>
+                                <th>Amount</th>
+                                <th>Risk Score</th>
+                                <th>Anomalies</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-table-body">
+                            <tr>
+                                <td>Dec 20, 2024</td>
+                                <td>INV-2024-500</td>
+                                <td>QuickFix Solutions Ltd</td>
+                                <td>$50,000.00</td>
+                                <td><span class="badge badge-danger">65/100</span></td>
+                                <td>2</td>
+                                <td>
+                                    <button class="btn-icon" title="View Report">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings-page" class="page">
+            <div class="settings-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>System Settings</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-section">
+                            <h4>API Configuration</h4>
+                            <div class="form-group">
+                                <label>API Endpoint</label>
+                                <input type="text" id="api-endpoint" value="http://localhost:8080" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <div class="status-indicator">
+                                    <span class="status-dot online"></span>
+                                    <span>Connected</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>Detection Thresholds</h4>
+                            <div class="form-group">
+                                <label>Price Inflation Threshold (%)</label>
+                                <input type="number" value="20" min="0" max="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Risk Score Alert Level</label>
+                                <input type="number" value="40" min="0" max="100">
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>Notifications</h4>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Email alerts for high-risk detections</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Real-time dashboard updates</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Save Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
