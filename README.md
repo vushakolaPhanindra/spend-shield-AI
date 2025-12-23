@@ -4,7 +4,11 @@
 
 SpendShield AI is a multi-agent orchestration platform powered by LangGraph and Google Gemini 2.0 Flash that automatically detects fraud in government procurement documents.
 ## 🎥 Demo Video
-[Watch Demo on YouTube](https://youtu.be/k_VRLxWYwiI?si=cBS7Ui_y6vC2cMJy)
+
+[![SpendShield AI Demo Video](https://img.youtube.com/vi/k_VRLxWYwiI/maxresdefault.jpg)](https://youtu.be/k_VRLxWYwiI)
+
+▶️ Click the image to watch the full demo
+
 
 ## 🎯 Features
 
